@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+	{% for card in cards %}
+	<div class="col-lg my-2">
+		<div class="card h-100 rounded-3">
+			<img
+				loading="lazy"
+				src="{{ card.image }}"
+				class="card-img-top rounded-top-3"
+			    alt="{{ card.image_alt }}"
+			/>
+
+			<div class="card-body bg-white text-black text-start rounded-bottom-3">
+				<p class="card-title fs-4">{{ card.title }}</p>
+				<p class="card-text">
+					{% if card.text %}
+						{{ card.text }}
+					{% endif %}
+					{% if card.enumeration %}
+					<ul class="list-group">
+						{% for row in card.enumeration %}
+						<li class="list-group-item enumeration">
+							{% if row.link %}
+							<a href="{{ row.link }}" target="_new">
+							{% endif %}
+							<i class="bi enumeration-symbol {{ row.icon }}"></i>
+							{% if row.link %}
+							</a>
+							{% endif %}
+							{{ row.text }}
+						</li>
+						{% endfor %}
+					</ul>
+					{% endif %}
+				</p>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>

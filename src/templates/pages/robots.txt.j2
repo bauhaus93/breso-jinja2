@@ -1,0 +1,6 @@
+{% for ua in disallowed_user_agents %}
+User-Agent: {{ ua }}
+Disallow: /
+{% endfor %}
+
+Sitemap: {{ sitemap }}

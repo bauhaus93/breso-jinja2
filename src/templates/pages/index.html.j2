@@ -1,0 +1,82 @@
+{% extends "layout/base.html.j2" %}
+{% block body %}
+
+<div class="row">
+    <div class="col">
+        <h1 class="main-title">Brettspielsonntag</h1>
+        <p class="my-5">
+            <img src="{{ logo_path }}" alt="Das Brettspielsonntag-Logo: Eine Gruppe verschiedenster Wesen sitzt um ein Lagerfeuer herum: Darth Vader, Deadpool, ein Baby-C'Thulhu, eine Maus und ein paar Meeple." />
+        </p>
+        <p class="fs-3">Zahlreiche Spiele kostenlos testen</p>
+    </div>
+</div>
+
+<div class="slide-in">
+    <div class="row mt-5">
+        <div class="col">
+            <h2>Nächstes Event</h2>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+            {% if next_date %}
+            <a href="/event.ics" aria-label="Lade einen Kalendereintrag für den nächsten Brettspielsonntag herunter" download="brettspielsonntag.ics">
+                <i class="bi bi-calendar2-event"></i>
+            </a>
+            <p class="fw-bold">{{ next_date }}</p>
+            {% else %}
+            <i class="bi bi-calendar2-event"></i>
+            <p class="fw-bold">{{ next_date_alt_text }}</p>
+            <p>{{ time_range }}</p>
+            {% endif %}
+
+        </div>
+        <div class="col-sm">
+            <a href="https://maps.app.goo.gl/ZLXqLNUG5heuWXt88" target="_new" aria-label="Link zu Google Maps, der den Veranstaltungsort anzeigt."><i class="bi bi-geo-alt-fill"></i></a>
+            <p class="fw-bold">Trading Cards United</p>
+            <p>Münzgrabenstraße 10, 8010 Graz</p>
+        </div>
+
+        <div class="col-sm">
+            <i class="bi bi-currency-euro"></i>
+            <p class="font-weight-bold">Gratis Eintritt</p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col">
+            <h3>Wir freuen uns auf dich!</h3>
+            <hr />
+        </div>
+    </div>
+
+    {% if next_date %}
+    <div class="row mt-3">
+        <div class="col">
+            <h2>Zukünftige Events</h2>
+            <ul class="list-group">
+                {% for future_date in future_dates %}
+                <li class="list-group-item text-center">
+                    {{ future_date }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="row mt-5">
+        <div class="col">
+            <h2>Eindrücke vom letzten Event</h2>
+            {% include "layout.carousel.html.j2" %}
+            <Carousel id="carousel_last_event" :image_paths="last_event.images" />
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}
