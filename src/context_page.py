@@ -96,6 +96,7 @@ def _create_context():
         "meta_description": "Zahlreiche Brettspiele kostenlos testen",
         "meta_keywords": "Brettspiele,Graz,Münzgrabengasse 10",
         "logo_path": _get_asset_path("logo.png"),
+        "asset_path": _ASSET_PATH,
         "future_dates": future_dates,
         "next_date": next_date,
         "time_range": f"{ _START_HOUR }:00-{ _END_HOUR }:00",

@@ -1,4 +1,5 @@
 .env
+assets/bootstrap.css
 *.pyc
 .DS_STORE
 .bin
